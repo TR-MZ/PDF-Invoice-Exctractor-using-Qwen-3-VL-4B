@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Extract date and amount from PDF receipts and invoices using AI">
+    <title>PDF Receipt Extractor</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📄 PDF Receipt Extractor</h1>
+            <p class="subtitle">Drag & drop PDF receipts to extract date, document name, and amount</p>
+        </header>
+
+        <div class="drop-zone" id="dropZone">
+            <div class="drop-zone-content">
+                <div class="drop-icon">📥</div>
+                <p class="drop-text">Drag & Drop PDF files here</p>
+                <p class="drop-subtext">or click to select files</p>
+                <input type="file" id="fileInput" accept=".pdf" multiple hidden>
+            </div>
+            <div class="processing-indicator" id="processingIndicator">
+                <div class="spinner"></div>
+                <span>Processing...</span>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2>Extracted Data</h2>
+                <div class="header-buttons">
+                    <button class="copy-all-btn" id="copyAllBtn" title="Copy all rows">
+                        📋 Copy All
+                    </button>
+                    <button class="clear-btn" id="clearBtn" title="Clear all results">
+                        🗑️ Clear All
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="results-table" id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Document Name</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Results will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="empty-state" id="emptyState">
+                <p>No data extracted yet. Drop a PDF to get started!</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Powered by Qwen3-VL-8B • Running locally on your machine</p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
